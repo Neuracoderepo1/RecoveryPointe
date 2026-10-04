@@ -95,7 +95,7 @@ $('authForm').addEventListener('submit', async (ev) => {
 const Views = {
   home() {
     app.innerHTML = `<div class="card"><h1>Lost money to fraud in Ghana? Start here.</h1>
-<p>RecoveryPointe helps you organise what happened, keep your evidence safe, and follow practical next steps with the right provider and reporting channels.</p>
+<p>RecoveryPointe helps you organise what happened, keep your evidence safe, and follow practical next steps with the right provider.</p>
 <p><a class="btn" href="#/report">Report a loss</a> <a class="btn sec" href="#/cases">My cases</a></p></div>
 <div class="warn"><strong>Recovery scam warning:</strong> never pay anyone who says they can recover your money, and never share passwords, OTPs, seed phrases, private keys or remote-access credentials with anyone, including us.</div>
 <div class="card"><h2>What we do and do not do</h2><ul><li>We help you record the incident, store evidence privately and see recommended next steps.</li><li>We do not guarantee recovery, give legal or financial advice, or access anyone's accounts or systems.</li></ul></div>`;
@@ -239,9 +239,10 @@ document.addEventListener('click', async (e) => {
   else if (act === 'reload') route();
   else if (act === 'signout') { const { error } = await sb.auth.signOut(); if (error) logErr('signout', error); }
   else if (act === 'view') {
+    const w = window.open('', '_blank'); // open inside the tap so iOS does not block it
     const { data, error } = await sb.storage.from('case-evidence').createSignedUrl(t.dataset.path, 60);
-    if (error || !data) { msg().innerHTML = say('err', 'We could not open that file. It may have been removed.'); return; }
-    window.open(data.signedUrl, '_blank', 'noopener');
+    if (error || !data) { if (w) w.close(); msg().innerHTML = say('err', 'We could not open that file. It may have been removed.'); return; }
+    if (w) { w.opener = null; w.location.href = data.signedUrl; } else { location.href = data.signedUrl; }
   } else if (act === 'del') {
     if (!confirm('Remove this file from your case?')) return;
     t.disabled = true;
