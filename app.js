@@ -131,7 +131,7 @@ const Views = {
 <label for="it">What happened?</label><select id="it" required><option value="">Select…</option>${Object.entries(TYPES).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select>
 <label for="ds">Describe the incident (min 20 characters)</label><textarea id="ds" rows="5" maxlength="5000" required></textarea>
 <div class="row"><div><label for="am">Amount lost (optional)</label><input id="am" type="number" min="0" step="0.01" inputmode="decimal"></div>
-<div><label for="cu">Currency</label><select id="cu"><option>GHS</option><option>USD</option><option>EUR</option><option>GBP</option></select></div></div>
+<div><label for="cu">Currency</label><select id="cu"><option>USD</option><option>EUR</option><option>GBP</option></select></div></div>
 <div class="row"><div><label for="dd">Date of incident (optional)</label><input id="dd" type="date" max="${today}"></div>
 <div><label for="pm">Payment method (optional)</label><input id="pm" maxlength="100" placeholder="e.g. Mobile Money, card, bank transfer"></div></div>
 <div class="row"><div><label for="pe">Platform / provider / person involved (optional)</label><input id="pe" maxlength="200"></div>
