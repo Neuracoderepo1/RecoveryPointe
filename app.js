@@ -102,12 +102,18 @@ const Views = {
 <div class="card"><h2>What we do and do not do</h2><ul><li>We help you record the incident, store evidence privately and see recommended next steps.</li><li>We do not guarantee recovery, give legal or financial advice, or access anyone's accounts or systems.</li></ul></div>`;
   },
   privacy() {
-    app.innerHTML = `<div class="card"><h1>Privacy notice</h1>
-<p><strong>What we collect:</strong> your name and email for your account, and the incident details and files you choose to submit.</p>
-<p><strong>Why:</strong> to build your case, produce guidance and let you track it. Only you can see your cases and evidence.</p>
-<p><strong>Evidence:</strong> files are stored privately and are opened only through short-lived links after we confirm you own the case.</p>
-<p><strong>Never submit</strong> passwords, OTPs, recovery codes, seed phrases, private keys or remote-access credentials.</p>
-<p><strong>Your data:</strong> to ask about or request changes to your data, email RecoveryPointe support at <a href="mailto:Godrarriyhwh@gmail.com">Godrarriyhwh@gmail.com</a>.</p></div>`;
+    app.innerHTML = `<div class="card"><h1>Privacy notice</h1><p class="muted">Last updated: 4 October 2026</p>
+<h2>Who we are</h2><p>RecoveryPointe helps people who lost money or digital assets online to organise what happened, store evidence privately and track their case. Contact: <a href="mailto:Godrarriyhwh@gmail.com">Godrarriyhwh@gmail.com</a></p>
+<h2>What we collect</h2><ul><li>Your name and email address, to run your account.</li><li>The incident details you choose to submit: incident type, your description, amount and currency, date, the platform or person involved, payment method and any transaction reference.</li><li>Evidence files you upload and reference notes you add.</li><li>A log of actions on your case, such as case submitted, evidence uploaded or reference added.</li></ul>
+<h2>Why we collect it</h2><p>To create your case, prepare general guidance, keep your evidence together and let you track progress. We do not use it for advertising and we do not sell it.</p>
+<div class="warn"><strong>Never give us</strong> passwords, one-time codes (OTPs), recovery codes, seed phrases, private keys or remote-access credentials. We will never ask for them. If you uploaded one by mistake, remove the file and contact us.</div>
+<h2>Who can see your data</h2><p>Your cases and evidence are visible only to you in the app. RecoveryPointe staff do not routinely view case content. We may access data only to fix a technical problem, keep the service secure or comply with the law.</p>
+<h2>How evidence is stored</h2><p>Files are kept in private storage and opened only through short-lived links after we confirm the case is yours.</p>
+<h2>Service providers and location</h2><p>Your data is processed by Supabase, which provides our database, sign-in and file storage (our project runs in Ireland), and by Vercel, which hosts the website. As these are global services, your data may be processed outside your own country.</p>
+<h2>How long we keep it</h2><p>We keep your data until you ask us to delete it. You can remove evidence files yourself in the app.</p>
+<h2>Your choices</h2><p>To access, correct, export or delete your account and case data, email us. We aim to reply within 30 days.</p>
+<h2>Not legal or financial advice</h2><p>RecoveryPointe does not guarantee recovery and does not provide legal representation or financial advice.</p>
+<h2>Changes</h2><p>If our practices change, we will update this page and the date above.</p></div>`;
   },
   reset() {
     app.innerHTML = `<div class="card"><h1>Set a new password</h1><div id="rmsg"></div><form id="rform" novalidate><label for="np">New password (at least 10 characters)</label><input id="np" type="password" minlength="10" autocomplete="new-password"><p><button type="submit">Update password</button></p></form></div>`;
