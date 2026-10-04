@@ -11,9 +11,9 @@ const MAXB = 10 * 1024 * 1024;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const money = (n, c) => { if (n == null) return 'Not stated'; try { return new Intl.NumberFormat('en-GH', { style: 'currency', currency: c }).format(n); } catch { return `${n} ${c}`; } };
-const dt = (s) => s ? new Date(s).toLocaleString('en-GH', { dateStyle: 'medium', timeStyle: 'short' }) : '';
-const dOnly = (s) => s ? new Date(s + 'T00:00:00').toLocaleDateString('en-GH', { dateStyle: 'medium' }) : 'Not stated';
+const money = (n, c) => { if (n == null) return 'Not stated'; try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c }).format(n); } catch { return `${n} ${c}`; } };
+const dt = (s) => s ? new Date(s).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '';
+const dOnly = (s) => s ? new Date(s + 'T00:00:00').toLocaleDateString(undefined, { dateStyle: 'medium' }) : 'Not stated';
 const app = $('app');
 let session = null, flash = null, pendingRid = null, busy = false;
 
@@ -95,7 +95,7 @@ $('authForm').addEventListener('submit', async (ev) => {
 const Views = {
   home() {
     app.innerHTML = `<div class="card"><p class="muted"><strong>ONLINE LOSS &amp; RECOVERY GUIDANCE</strong></p><h1>Lost money or digital assets online? Start with the facts.</h1>
-<p>Document what happened. Understand your legitimate recovery and reporting options. Avoid recovery scams and preserve the evidence that may matter.</p>
+<p>Document what happened. Understand your legitimate recovery options. Avoid recovery scams and preserve the evidence that may matter.</p>
 <p><a class="btn" href="#/report">Report a loss →</a> <a class="btn sec" href="#/cases">Track my case</a></p></div>
 <div class="warn"><strong>Recovery scam warning:</strong> never pay anyone who says they can recover your money, and never share passwords, OTPs, seed phrases, private keys or remote-access credentials with anyone, including us.</div>
 <div class="card"><h2>What we do and do not do</h2><ul><li>We help you record the incident, store evidence privately and see recommended next steps.</li><li>We do not guarantee recovery, give legal or financial advice, or access anyone's accounts or systems.</li></ul></div>`;
