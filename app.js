@@ -94,9 +94,9 @@ $('authForm').addEventListener('submit', async (ev) => {
 /* ---------- views ---------- */
 const Views = {
   home() {
-    app.innerHTML = `<div class="card"><h1>Lost money to fraud in Ghana? Start here.</h1>
-<p>RecoveryPointe helps you organise what happened, keep your evidence safe, and follow practical next steps with the right provider.</p>
-<p><a class="btn" href="#/report">Report a loss</a> <a class="btn sec" href="#/cases">My cases</a></p></div>
+    app.innerHTML = `<div class="card"><p class="muted"><strong>ONLINE LOSS &amp; RECOVERY GUIDANCE</strong></p><h1>Lost money or digital assets online? Start with the facts.</h1>
+<p>Document what happened. Understand your legitimate recovery and reporting options. Avoid recovery scams and preserve the evidence that may matter.</p>
+<p><a class="btn" href="#/report">Report a loss →</a> <a class="btn sec" href="#/cases">Track my case</a></p></div>
 <div class="warn"><strong>Recovery scam warning:</strong> never pay anyone who says they can recover your money, and never share passwords, OTPs, seed phrases, private keys or remote-access credentials with anyone, including us.</div>
 <div class="card"><h2>What we do and do not do</h2><ul><li>We help you record the incident, store evidence privately and see recommended next steps.</li><li>We do not guarantee recovery, give legal or financial advice, or access anyone's accounts or systems.</li></ul></div>`;
   },
