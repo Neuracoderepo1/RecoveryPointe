@@ -170,7 +170,7 @@ const Views = {
 <div class="card"><h2>Recovery guidance</h2><p>${esc(k.assessment_summary)}</p><ol class="plan">${plan.map((p) => `<li><strong>${esc(p.title)}</strong><br>${esc(p.detail)}</li>`).join('')}</ol>
 <p class="muted">Guidance only. Recovery is not guaranteed and depends on the circumstances. Confirm contact details through each organisation's official channels.</p></div>
 <div class="card"><h2>Evidence</h2><div class="warn">Never upload passwords, OTPs, recovery codes, seed phrases, private keys or remote-access credentials.</div>
-${fl.data.length ? '<ul>' + fl.data.map((f) => `<li>${esc(f.file_name)} <span class="muted">(${esc(Math.ceil((f.size_bytes || 0) / 1024))} KB · ${esc(dt(f.created_at))})</span> <button class="sec" data-act="view" data-path="${esc(f.storage_path)}">View</button> <button class="sec" data-act="del" data-id="${esc(f.id)}" data-path="${esc(f.storage_path)}" aria-label="Remove ${esc(f.file_name)}">Remove</button></li>`).join('') + '</ul>' : '<p>No evidence uploaded yet.</p>'}
+${fl.data.length ? '<ul>' + fl.data.map((f) => `<li>${esc(f.file_name)} <span class="muted">(${esc(Math.ceil((f.size_bytes || 0) / 1024))} KB · ${esc(dt(f.created_at))})</span> <button class="sec" data-act="view" data-path="${esc(f.storage_path)}" aria-label="View ${esc(f.file_name)}">View</button> <button class="sec" data-act="del" data-id="${esc(f.id)}" data-path="${esc(f.storage_path)}" aria-label="Remove ${esc(f.file_name)}">Remove</button></li>`).join('') + '</ul>' : '<p>No evidence uploaded yet.</p>'}
 <label for="more">Add evidence</label><input id="more" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.csv"><p><button data-act="upload" data-case="${esc(k.id)}">Upload</button></p></div>
 <div class="card"><h2>Add a report reference</h2><p class="muted">For example a reference number given to you by a provider.</p><label for="refn">Reference note</label><input id="refn" maxlength="500"><p><button data-act="ref" data-case="${esc(k.id)}">Add reference</button></p></div>
 <div class="card"><h2>Activity</h2><ul class="tl">${ev.data.map((e) => `<li><strong>${esc(e.title)}</strong> <span class="muted">${esc(dt(e.created_at))}</span>${e.description ? '<br>' + esc(e.description) : ''}</li>`).join('')}</ul></div>`;
@@ -280,7 +280,8 @@ async function route() {
     else if (h.startsWith('#/case/')) await Views.case(h.slice(7));
     else Views.home();
   } catch (e) { logErr('route', e); app.innerHTML = say('err', 'Something went wrong. Please try again.'); }
-  app.focus({ preventScroll: true });
+  const hd = app.querySelector('h1');
+  if (hd) { hd.setAttribute('tabindex', '-1'); hd.focus({ preventScroll: true }); } else app.focus({ preventScroll: true });
 }
 window.addEventListener('hashchange', route);
 (async () => {
