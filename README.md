@@ -25,5 +25,8 @@ Dashboard settings to confirm: Auth > Email confirmations ON, Site URL and Redir
 ## Deploy
 Any static host. `vercel.json` sets CSP and security headers (CSP allows only this site, jsDelivr for supabase-js, and the Supabase project URL).
 
+## Tests
+`tests/rls_smoke.sql` — run in the Supabase SQL editor; it rolls back and reports results (duplicate submit, validation, cross-user isolation, blocked direct writes).
+
 ## Support contact
-Add a real support address in the privacy notice (`app.js`, `Views.privacy`) before launch.
+Set in the privacy notice (`app.js`, `Views.privacy`).

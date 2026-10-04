@@ -106,7 +106,7 @@ const Views = {
 <p><strong>Why:</strong> to build your case, produce guidance and let you track it. Only you can see your cases and evidence.</p>
 <p><strong>Evidence:</strong> files are stored privately and are opened only through short-lived links after we confirm you own the case.</p>
 <p><strong>Never submit</strong> passwords, OTPs, recovery codes, seed phrases, private keys or remote-access credentials.</p>
-<p><strong>Your data:</strong> to ask about or request changes to your data, contact RecoveryPointe support (contact address to be added by the operator before launch).</p></div>`;
+<p><strong>Your data:</strong> to ask about or request changes to your data, email RecoveryPointe support at <a href="mailto:Godrarriyhwh@gmail.com">Godrarriyhwh@gmail.com</a>.</p></div>`;
   },
   reset() {
     app.innerHTML = `<div class="card"><h1>Set a new password</h1><div id="rmsg"></div><form id="rform" novalidate><label for="np">New password</label><input id="np" type="password" minlength="8" autocomplete="new-password"><p><button type="submit">Update password</button></p></form></div>`;
