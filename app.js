@@ -94,7 +94,7 @@ $('authForm').addEventListener('submit', async (ev) => {
 /* ---------- views ---------- */
 const Views = {
   home() {
-    app.innerHTML = `<div class="card"><p class="muted"><strong>ONLINE LOSS &amp; RECOVERY GUIDANCE</strong></p><h1>Lost money or digital assets online? Start with the facts.</h1>
+    app.innerHTML = `<div class="card"><p class="muted"><strong>ONLINE LOSS &amp; RECOVERY GUIDANCE</strong></p><h1>Lost money or digital assets online? Let&rsquo;s help you know your recovery options.</h1>
 <p>Document what happened. Understand your legitimate recovery options. Avoid recovery scams and preserve the evidence that may matter.</p>
 <p><a class="btn" href="#/report">Report a loss →</a> <a class="btn sec" href="#/cases">Track my case</a></p></div>
 <div class="warn"><strong>Recovery scam warning:</strong> never pay anyone who says they can recover your money, and never share passwords, OTPs, seed phrases, private keys or remote-access credentials with anyone, including us.</div>
