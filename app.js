@@ -70,7 +70,8 @@ $('authForm').addEventListener('submit', async (ev) => {
   const email = $('email').value.trim(), password = $('password').value, name = $('fullName').value.trim();
   const out = $('authMsg');
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { out.innerHTML = say('err', 'Please enter a valid email address.'); return; }
-  if (mode !== 'forgot' && password.length < 8) { out.innerHTML = say('err', 'Password must be at least 8 characters.'); return; }
+  if (mode === 'signin' && !password) { out.innerHTML = say('err', 'Please enter your password.'); return; }
+  if (mode === 'signup' && password.length < 10) { out.innerHTML = say('err', 'Password must be at least 10 characters.'); return; }
   if (mode === 'signup' && name.length < 2) { out.innerHTML = say('err', 'Please enter your full name.'); return; }
   busy = true; $('authSubmit').disabled = true; out.innerHTML = say('ok', 'Please wait…');
   try {
@@ -109,12 +110,12 @@ const Views = {
 <p><strong>Your data:</strong> to ask about or request changes to your data, email RecoveryPointe support at <a href="mailto:Godrarriyhwh@gmail.com">Godrarriyhwh@gmail.com</a>.</p></div>`;
   },
   reset() {
-    app.innerHTML = `<div class="card"><h1>Set a new password</h1><div id="rmsg"></div><form id="rform" novalidate><label for="np">New password</label><input id="np" type="password" minlength="8" autocomplete="new-password"><p><button type="submit">Update password</button></p></form></div>`;
+    app.innerHTML = `<div class="card"><h1>Set a new password</h1><div id="rmsg"></div><form id="rform" novalidate><label for="np">New password (at least 10 characters)</label><input id="np" type="password" minlength="10" autocomplete="new-password"><p><button type="submit">Update password</button></p></form></div>`;
     $('rform').onsubmit = async (e) => {
       e.preventDefault();
       if (!session) { $('rmsg').innerHTML = say('err', 'This reset link has expired. Request a new one.'); return; }
       const pw = $('np').value;
-      if (pw.length < 8) { $('rmsg').innerHTML = say('err', 'Password must be at least 8 characters.'); return; }
+      if (pw.length < 10) { $('rmsg').innerHTML = say('err', 'Password must be at least 10 characters.'); return; }
       const { error } = await sb.auth.updateUser({ password: pw });
       if (error) $('rmsg').innerHTML = say('err', 'We could not update your password. Please request a new link.');
       else { flash = ['ok', 'Password updated.']; location.hash = '#/cases'; }
