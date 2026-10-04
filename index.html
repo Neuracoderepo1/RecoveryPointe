@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RecoveryPointe — Organise your fraud report</title>
+<meta name="description" content="Ghana-first guidance to organise evidence, find legitimate reporting routes and track your case after a financial loss.">
+<style>
+:root{--bg:#f6f8f9;--card:#fff;--ink:#12232b;--mut:#4a5d66;--brand:#0b5d66;--brand2:#084850;--line:#d5dee2;--warn:#8a4b00;--warnbg:#fff4e0;--err:#9b1c1c;--ok:#14633a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--brand);color:#fff;padding:.6rem 1rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+header a.logo{color:#fff;font-weight:700;font-size:1.2rem;text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:.4rem}
+main{max-width:860px;margin:0 auto;padding:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;margin:0 0 1rem}
+h1{font-size:1.6rem;line-height:1.25;margin:.2rem 0 .6rem}h2{font-size:1.2rem;margin:.2rem 0 .6rem}
+button,.btn{font:inherit;min-height:44px;padding:.5rem 1rem;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+button.sec,.btn.sec{background:#fff;color:var(--brand)}header button,header .btn{border-color:#fff}header button.sec{background:transparent;color:#fff}
+button:disabled{opacity:.6;cursor:not-allowed}
+:focus-visible{outline:3px solid #ffb703;outline-offset:2px}
+label{display:block;font-weight:600;margin:.7rem 0 .2rem}
+input,select,textarea{font:inherit;width:100%;min-height:44px;padding:.5rem;border:1px solid #8aa0a8;border-radius:8px;background:#fff;color:var(--ink)}
+.row{display:grid;gap:.8rem;grid-template-columns:1fr}@media(min-width:640px){.row{grid-template-columns:1fr 1fr}}
+.warn{background:var(--warnbg);border:1px solid #e2b365;color:var(--warn);border-radius:8px;padding:.7rem;margin:.7rem 0}
+.msg{padding:.6rem .8rem;border-radius:8px;margin:.6rem 0}.msg.err{background:#fde8e8;color:var(--err);border:1px solid #f0b4b4}.msg.ok{background:#e4f5ec;color:var(--ok);border:1px solid #a9d8bd}
+.badge{display:inline-block;padding:.1rem .5rem;border-radius:999px;border:1px solid var(--line);font-size:.85rem;margin-right:.3rem;background:#eef3f5}
+.badge.u-critical,.badge.u-high{border-color:var(--err);color:var(--err);font-weight:700}
+.muted{color:var(--mut);font-size:.9rem}.case{display:block;color:inherit;text-decoration:none}.case:hover{border-color:var(--brand)}
+ol.plan li{margin:.5rem 0}ul.tl{list-style:none;padding:0;margin:0}ul.tl li{border-left:3px solid var(--brand);padding:.2rem 0 .6rem .7rem}
+footer{max-width:860px;margin:0 auto;padding:1rem;color:var(--mut);font-size:.85rem}
+dialog{border:1px solid var(--line);border-radius:12px;width:min(92vw,420px);padding:1rem}dialog::backdrop{background:rgba(0,0,0,.5)}
+.tabs{display:flex;gap:.4rem;margin-bottom:.5rem}.tabs button[aria-selected=true]{background:var(--brand);color:#fff}.tabs button{background:#fff;color:var(--brand)}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<a class="sr" href="#app" id="skip">Skip to content</a>
+<header>
+  <a class="logo" href="#/">RecoveryPointe</a>
+  <nav id="nav" aria-label="Main"></nav>
+</header>
+<main id="app" tabindex="-1" aria-live="polite"><p>Loading…</p></main>
+<footer>
+  <p><strong>Important:</strong> RecoveryPointe helps you organise your report and find legitimate reporting routes. We do not guarantee recovery, provide legal representation or financial advice, hack accounts or systems, or ask for your passwords, OTPs, seed phrases, private keys or remote access. <a href="#/privacy">Privacy notice</a></p>
+</footer>
+
+<dialog id="authDlg" aria-labelledby="authTitle">
+  <h2 id="authTitle">Account</h2>
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" data-tab="signin" aria-selected="true">Sign in</button>
+    <button type="button" role="tab" data-tab="signup" aria-selected="false">Create account</button>
+  </div>
+  <div id="authMsg" role="alert"></div>
+  <form id="authForm" novalidate>
+    <div id="nameWrap" hidden><label for="fullName">Full name</label><input id="fullName" autocomplete="name" maxlength="100"></div>
+    <label for="email">Email</label><input id="email" type="email" autocomplete="email" required>
+    <div id="pwWrap"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" minlength="8" required></div>
+    <p><button type="submit" id="authSubmit">Sign in</button> <button type="button" class="sec" id="authClose">Close</button></p>
+    <p><button type="button" class="sec" id="forgotBtn">Forgot password?</button></p>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
